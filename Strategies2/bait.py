@@ -32,8 +32,8 @@ class Bait(Strategy):
         return string
 
     def step(self):
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         # If we have stopped approaching, reset the state
         if type(self.tactic) != Tactics.Approach:

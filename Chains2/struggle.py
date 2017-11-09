@@ -7,7 +7,7 @@ from Chains.chain import Chain
 class Struggle(Chain):
     def step(self):
         # Just naively press and release every button every other frame
-        controller = globals.controller
+        controller = globals.controller2
 
         # Press every button
         if globals.gamestate.frame % 2:

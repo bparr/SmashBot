@@ -6,7 +6,7 @@ from melee.enums import Action
 
 class Wait(Tactic):
     def shouldwait():
-        smashbot_state = globals.smashbot_state
+        smashbot_state = globals.smashbot_state2
 
         # Make an exception for shine states, since we're still actionable for them
         if smashbot_state.action in [Action.DOWN_B_GROUND_START, Action.DOWN_B_GROUND, Action.DOWN_B_STUN]:

@@ -16,8 +16,8 @@ class GrabAndThrow(Chain):
         self.direction = direction
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
 
         self.interruptible = False
 

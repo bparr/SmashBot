@@ -18,12 +18,12 @@ class Firefox(Chain):
         else:
             self.direction = direction
 
-        diff_x = abs(melee.stages.edgeposition(globals.gamestate.stage) - abs(globals.smashbot_state.x))
+        diff_x = abs(melee.stages.edgeposition(globals.gamestate.stage) - abs(globals.smashbot_state2.x))
         if diff_x > 50:
             self.direction = FIREFOX(random.randint(1, 2))
 
     def getangle(self):
-        smashbot_state = globals.smashbot_state
+        smashbot_state = globals.smashbot_state2
 
         x = 0
         if smashbot_state.x < 0:
@@ -50,8 +50,8 @@ class Firefox(Chain):
         return x, y
 
     def step(self):
-        smashbot_state = globals.smashbot_state
-        controller = globals.controller
+        smashbot_state = globals.smashbot_state2
+        controller = globals.controller2
 
         # We're done here if...
         if smashbot_state.on_ground or smashbot_state.action in [Action.EDGE_CATCHING, Action.EDGE_HANGING]:

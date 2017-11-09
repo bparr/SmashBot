@@ -20,8 +20,8 @@ class Tech(Chain):
             self.direction = direction
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
 
         # If we're on the ground, we're done here
         if smashbot_state.on_ground:

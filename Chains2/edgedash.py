@@ -10,9 +10,9 @@ class Edgedash(Chain):
         self.letgoframe = 0
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # If we just grabbed the edge, just wait
         if smashbot_state.action == Action.EDGE_CATCHING:

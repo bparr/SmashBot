@@ -16,8 +16,8 @@ class SmashAttack(Chain):
         self.frames_charged = 0
 
     def step(self):
-        smashbot_state = globals.smashbot_state
-        controller = globals.controller
+        smashbot_state = globals.smashbot_state2
+        controller = globals.controller2
 
         if smashbot_state.action == Action.LANDING_SPECIAL:
             self.interruptible = True

@@ -19,7 +19,7 @@ class Pressure(Tactic):
 
         # Remove the dash dance from the random pool if we're in a spot where it would be bad
         dashchance = 2
-        if globals.smashbot_state.action not in [Action.STANDING, Action.TURNING, Action.DASHING]:
+        if globals.smashbot_state2.action not in [Action.STANDING, Action.TURNING, Action.DASHING]:
             dashchance = 0
 
         # What sort of shield pressure should this be? Pick one at random
@@ -44,9 +44,9 @@ class Pressure(Tactic):
         # Opponent must be shielding
         shieldactions = [Action.SHIELD_START, Action.SHIELD, \
             Action.SHIELD_STUN, Action.SHIELD_REFLECT]
-        sheilding = globals.opponent_state.action in shieldactions
+        sheilding = globals.opponent_state2.action in shieldactions
 
-        if globals.opponent_state.invulnerability_left > 0:
+        if globals.opponent_state2.invulnerability_left > 0:
             return False
 
         # We must be in close range
@@ -55,8 +55,8 @@ class Pressure(Tactic):
         return sheilding and inrange
 
     def step(self):
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         #If we can't interrupt the chain, just continue it
         if self.chain != None and not self.chain.interruptible:

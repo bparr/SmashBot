@@ -6,8 +6,8 @@ from Chains.chain import Chain
 # ArmadaShine
 class ArmadaShine(Chain):
     def inrange():
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
         # Can we armada shine?
         #   To do this, let's assume that we have to hit the opponent in the cooldown of an attack
         #   or in a laggy non-attack animation.
@@ -25,8 +25,8 @@ class ArmadaShine(Chain):
         return False
 
     def framewindow():
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
         start, end = -1, -1
         # Is opponent attacking?
         if globals.framedata.isattack(opponent_state.character, opponent_state.action):
@@ -39,8 +39,8 @@ class ArmadaShine(Chain):
         return start, end
 
     def traveltime():
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # Calculate the target_x and target_y
         #TODO For now let's assume they stay still. But we need to count locomotion
@@ -80,9 +80,9 @@ class ArmadaShine(Chain):
         return frames_x, frames_y
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # How are we going to do the shine? There's 6 options:
         #   1) Full jump then double jump

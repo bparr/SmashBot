@@ -15,8 +15,8 @@ class Illusion(Chain):
         self.length = length
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
 
         # Yea, the names are wrong here, deal with it. Maybe I'll fix it sometime
 

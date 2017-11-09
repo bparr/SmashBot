@@ -7,9 +7,9 @@ from Chains.chain import Chain
 class Dropdownshine(Chain):
     # To be checked once at the start of the chain
     def inrange():
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # We must be edge hanging
         if smashbot_state.action != Action.EDGE_HANGING:
@@ -48,9 +48,9 @@ class Dropdownshine(Chain):
         return False
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # Do an emergency shine if we run out of invulnerability, then end the chain
         if smashbot_state.invulnerability_left == 0 and smashbot_state.action != Action.EDGE_HANGING:

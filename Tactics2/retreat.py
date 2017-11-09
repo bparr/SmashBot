@@ -6,8 +6,8 @@ from Tactics.tactic import Tactic
 
 class Retreat(Tactic):
     def shouldretreat():
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         if smashbot_state.invulnerability_left > 1:
             return False
@@ -50,7 +50,7 @@ class Retreat(Tactic):
             self.chain.step()
             return
 
-        needswavedash = globals.smashbot_state.action in [Action.DOWN_B_GROUND, Action.DOWN_B_STUN, \
+        needswavedash = globals.smashbot_state2.action in [Action.DOWN_B_GROUND, Action.DOWN_B_STUN, \
             Action.DOWN_B_GROUND_START, Action.LANDING_SPECIAL, Action.SHIELD, Action.SHIELD_START, \
             Action.SHIELD_RELEASE, Action.SHIELD_STUN, Action.SHIELD_REFLECT]
         if needswavedash:
@@ -58,13 +58,13 @@ class Retreat(Tactic):
             return
 
         bufferzone = 30
-        if globals.opponent_state.character == Character.SHEIK and globals.opponent_state.action == Action.SWORD_DANCE_2_HIGH:
+        if globals.opponent_state2.character == Character.SHEIK and globals.opponent_state2.action == Action.SWORD_DANCE_2_HIGH:
             bufferzone = 55
-        onright = globals.opponent_state.x < globals.smashbot_state.x
+        onright = globals.opponent_state2.x < globals.smashbot_state2.x
         if not onright:
             bufferzone *= -1
 
-        pivotpoint = globals.opponent_state.x + bufferzone
+        pivotpoint = globals.opponent_state2.x + bufferzone
         # Don't run off the stage though, adjust this back inwards a little if it's off
 
         edgebuffer = 30

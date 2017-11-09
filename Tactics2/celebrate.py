@@ -6,8 +6,8 @@ from Tactics.tactic import Tactic
 
 class Celebrate(Tactic):
     def deservescelebration():
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         if smashbot_state.off_stage:
             return False
@@ -26,8 +26,8 @@ class Celebrate(Tactic):
         return False
 
     def step(self):
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         if smashbot_state.action == Action.EDGE_HANGING:
             self.chain = None

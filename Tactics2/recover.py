@@ -11,8 +11,8 @@ from Chains.illusion import SHORTEN
 class Recover(Tactic):
     # Do we need to recover?
     def needsrecovery():
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         onedge = smashbot_state.action in [Action.EDGE_HANGING, Action.EDGE_CATCHING]
         opponentonedge = opponent_state.action in [Action.EDGE_HANGING, Action.EDGE_CATCHING]
@@ -63,8 +63,8 @@ class Recover(Tactic):
 
 
     def step(self):
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # If we can't interrupt the chain, just continue it
         if self.chain != None and not self.chain.interruptible:

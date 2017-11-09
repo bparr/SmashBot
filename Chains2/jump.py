@@ -8,7 +8,7 @@ class Jump(Chain):
         self.x = x
 
     def step(self):
-        controller = globals.controller
+        controller = globals.controller2
         self.interruptible = True
 
         controller.tilt_analog(Button.BUTTON_MAIN, self.x, 0.5)

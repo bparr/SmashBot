@@ -10,7 +10,7 @@ class Mitigate(Tactic):
         self.randomdi = random.randint(0, 1)
 
     def needsmitigation():
-        smashbot_state = globals.smashbot_state
+        smashbot_state = globals.smashbot_state2
 
         # Always interrupt if we got hit. Whatever chain we were in will have been broken anyway
         if smashbot_state.action in [Action.GRABBED, Action.GRAB_PUMMELED, Action.GRAB_PULL, \
@@ -38,8 +38,8 @@ class Mitigate(Tactic):
             self.chain.step()
             return
 
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # Did we get grabbed?
         if smashbot_state.action in [Action.GRABBED, Action.GRAB_PUMMELED, Action.GRAB_PULL, \

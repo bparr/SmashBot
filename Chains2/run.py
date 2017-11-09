@@ -8,7 +8,7 @@ class Run(Chain):
         self.rundirection = rundirection
 
     def step(self):
-        controller = globals.controller
+        controller = globals.controller2
         # Run in the specified direction
         x = 0
         if self.rundirection:

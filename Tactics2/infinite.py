@@ -9,10 +9,10 @@ from melee.enums import Character
 
 class Infinite(Tactic):
     def __init__(self):
-        self.movingright = globals.opponent_state.speed_x_attack + globals.opponent_state.speed_ground_x_self > 0
+        self.movingright = globals.opponent_state2.speed_x_attack + globals.opponent_state2.speed_ground_x_self > 0
 
     def killpercent():
-        character = globals.opponent_state.character
+        character = globals.opponent_state2.character
         if character == Character.CPTFALCON:
             return 113
         if character == Character.FALCO:
@@ -34,8 +34,8 @@ class Infinite(Tactic):
         return 120
 
     def caninfinite():
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
         isroll = globals.framedata.isroll(opponent_state.character, opponent_state.action)
 
         # Only infinite on difficulty 1, 2, and 3
@@ -61,9 +61,9 @@ class Infinite(Tactic):
         if smashbot_state.action == Action.DASHING and smashbot_state.action_frame >= 11:
             if (smashbot_state.speed_ground_x_self > 0) == (smashbot_state.x > 0):
                 edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)
-                if globals.opponent_state.x < 0:
+                if globals.opponent_state2.x < 0:
                     edge_x = -edge_x
-                edgedistance = abs(edge_x - globals.smashbot_state.x)
+                edgedistance = abs(edge_x - globals.smashbot_state2.x)
                 if edgedistance < 16:
                     return False
 
@@ -84,8 +84,8 @@ class Infinite(Tactic):
         return False
 
     def step(self):
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         #If we can't interrupt the chain, just continue it
         if self.chain != None and not self.chain.interruptible:

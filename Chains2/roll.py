@@ -5,9 +5,9 @@ from Chains.chain import Chain
 
 class Roll(Chain):
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # Don't try to spot dodge in the air
         if not smashbot_state.on_ground:

@@ -13,9 +13,9 @@ class Waveshine(Chain):
         self.distance = distance
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         shineablestates = [Action.TURNING, Action.STANDING, Action.WALK_SLOW, Action.WALK_MIDDLE, \
             Action.WALK_FAST, Action.EDGE_TEETERING_START, Action.EDGE_TEETERING, Action.CROUCHING, \
@@ -86,7 +86,7 @@ class Waveshine(Chain):
             self.interruptible = False
             controller.press_button(Button.BUTTON_L)
             # Always wavedash the direction opponent is moving
-            opponentspeed = globals.opponent_state.speed_x_attack + globals.opponent_state.speed_ground_x_self
+            opponentspeed = globals.opponent_state2.speed_x_attack + globals.opponent_state2.speed_ground_x_self
             direction = opponentspeed > 0
             onleft = smashbot_state.x < opponent_state.x
             if abs(opponentspeed) < 0.01:
@@ -94,9 +94,9 @@ class Waveshine(Chain):
 
             # Unless we're RIGHT on top of the edge. In which case the only safe wavedash is back on the stage
             edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)
-            if globals.opponent_state.x < 0:
+            if globals.opponent_state2.x < 0:
                 edge_x = -edge_x
-            edgedistance = abs(edge_x - globals.smashbot_state.x)
+            edgedistance = abs(edge_x - globals.smashbot_state2.x)
             if edgedistance < 0.5:
                 direction = smashbot_state.x < 0
 

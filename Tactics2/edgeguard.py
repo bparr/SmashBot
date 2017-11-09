@@ -15,8 +15,8 @@ class Edgeguard(Tactic):
 
     # This is exactly flipped from the recover logic
     def canedgeguard():
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         if not smashbot_state.off_stage and opponent_state.action in [Action.EDGE_HANGING, Action.EDGE_CATCHING]:
             return True
@@ -48,7 +48,7 @@ class Edgeguard(Tactic):
         return False
 
     def illusionhighframes():
-        opponent_state = globals.opponent_state
+        opponent_state = globals.opponent_state2
 
         inillusion =  opponent_state.character in [Character.FOX, Character.FALCO] and \
             opponent_state.action in [Action.SWORD_DANCE_2_HIGH, Action.SWORD_DANCE_2_MID] and (0 < opponent_state.y < 30)
@@ -86,7 +86,7 @@ class Edgeguard(Tactic):
 
     # Is opponent trying to firefox above the stage?
     def firefoxhighframes():
-        opponent_state = globals.opponent_state
+        opponent_state = globals.opponent_state2
 
         firefox = opponent_state.action in [Action.SWORD_DANCE_4_HIGH, Action.SWORD_DANCE_4_MID] and opponent_state.character in [Character.FOX, Character.FALCO]
         if not firefox:
@@ -107,8 +107,8 @@ class Edgeguard(Tactic):
         return 999
 
     def canrecoverhigh():
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         if opponent_state.character == Character.JIGGLYPUFF:
             return True
@@ -169,8 +169,8 @@ class Edgeguard(Tactic):
         return True
 
     def upbheight():
-        character = globals.opponent_state.character
-        opponent_state = globals.opponent_state
+        character = globals.opponent_state2.character
+        opponent_state = globals.opponent_state2
 
         if character == Character.FOX:
             # If they are in the teleport section, predict how much more they have to go
@@ -208,7 +208,7 @@ class Edgeguard(Tactic):
         return 40
 
     def upbapexframes():
-        character = globals.opponent_state.character
+        character = globals.opponent_state2.character
         if character == Character.FOX:
             return 118
         if character == Character.FALCO:
@@ -238,8 +238,8 @@ class Edgeguard(Tactic):
 
     # This is the very lazy way of doing this, but "meh". Maybe I'll get around to doing it right
     def isupb():
-        character = globals.opponent_state.character
-        action = globals.opponent_state.action
+        character = globals.opponent_state2.character
+        action = globals.opponent_state2.action
         if character in [Character.FOX, Character.FALCO]:
             if action in [Action.SWORD_DANCE_3_LOW, Action.SWORD_DANCE_4_MID, Action.SWORD_DANCE_1_AIR]:
                 return True
@@ -272,7 +272,7 @@ class Edgeguard(Tactic):
     def snaptoedgeframes():
         # How long will it take opponent to grab the edge?
         #   Distance to the snap point of the edge
-        opponent_state = globals.opponent_state
+        opponent_state = globals.opponent_state2
         edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)
         edgedistance = abs(opponent_state.x) - (edge_x + 15)
         # Assume opponent can move at their "max" speed
@@ -353,8 +353,8 @@ class Edgeguard(Tactic):
         return edgegrabframes
 
     def step(self):
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
 
         recoverhigh = Edgeguard.canrecoverhigh()
 
@@ -389,7 +389,7 @@ class Edgeguard(Tactic):
                 if Edgeguard.isupb():
                     #TODO: Make this a chain
                     self.chain = None
-                    globals.controller.press_button(Button.BUTTON_L)
+                    globals.controller2.press_button(Button.BUTTON_L)
                     return
                 else:
                     self.chain = None
@@ -455,7 +455,7 @@ class Edgeguard(Tactic):
             if not canrecover:
                 #TODO: Make this a chain
                 self.chain = None
-                globals.controller.press_button(Button.BUTTON_L)
+                globals.controller2.press_button(Button.BUTTON_L)
                 return
 
             # Don't roll up too early for Falcon
@@ -466,7 +466,7 @@ class Edgeguard(Tactic):
             if Edgeguard.isupb() and not landonstage and not falconupearly:
                 #TODO: Make this a chain
                 self.chain = None
-                globals.controller.press_button(Button.BUTTON_L)
+                globals.controller2.press_button(Button.BUTTON_L)
                 return
 
             # Edgestall
@@ -528,7 +528,7 @@ class Edgeguard(Tactic):
         # We are on the stage
         else:
             edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)
-            edgedistance = abs(edge_x - abs(globals.smashbot_state.x))
+            edgedistance = abs(edge_x - abs(globals.smashbot_state2.x))
 
             randomgrab = False
             if random.randint(0, 20) == 0:

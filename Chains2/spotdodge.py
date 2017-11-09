@@ -5,8 +5,8 @@ from Chains.chain import Chain
 
 class SpotDodge(Chain):
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
 
         # Don't try to spot dodge in the air
         if not smashbot_state.on_ground:

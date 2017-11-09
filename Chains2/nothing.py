@@ -4,5 +4,5 @@ from Chains.chain import Chain
 
 class Nothing(Chain):
     def step(self):
-        globals.controller.empty_input()
+        globals.controller2.empty_input()
         self.interruptible = True

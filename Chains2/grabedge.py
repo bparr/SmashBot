@@ -9,9 +9,9 @@ class Grabedge(Chain):
         self.wavedash = wavedash
 
         edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)
-        if globals.opponent_state.x < 0:
+        if globals.opponent_state2.x < 0:
             edge_x = -edge_x
-        edgedistance = abs(edge_x - globals.smashbot_state.x)
+        edgedistance = abs(edge_x - globals.smashbot_state2.x)
 
         if edgedistance > 15:
             self.wavedash = False
@@ -19,9 +19,9 @@ class Grabedge(Chain):
             self.wavedash = False
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # Where is the edge that we're going to?
         edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)

@@ -8,9 +8,9 @@ class Powershield(Chain):
         self.hold = hold
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
 
         # Don't try to shield in the air
         if not smashbot_state.on_ground:
@@ -22,7 +22,7 @@ class Powershield(Chain):
         firefox = opponent_state.action in [Action.SWORD_DANCE_4_HIGH, Action.SWORD_DANCE_4_MID] and opponent_state.character in [Character.FOX, Character.FALCO]
 
         # If we get to cooldown, let go
-        attackstate = globals.framedata.attackstate_simple(globals.opponent_state)
+        attackstate = globals.framedata.attackstate_simple(globals.opponent_state2)
         if attackstate in [melee.enums.AttackState.COOLDOWN, melee.enums.AttackState.NOT_ATTACKING] \
                 and len(globals.gamestate.projectiles) == 0 and not firefox:
             self.interruptible = True

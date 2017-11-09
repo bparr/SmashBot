@@ -10,7 +10,7 @@ from Chains.shffl import SHFFL_DIRECTION
 class Punish(Tactic):
     # How many frames do we have to work with for the punish
     def framesleft():
-        opponent_state = globals.opponent_state
+        opponent_state = globals.opponent_state2
 
         # For some dumb reason, the game shows the standing animation as having a large hitstun
         #   manually account for this
@@ -129,7 +129,7 @@ class Punish(Tactic):
     # Static function that returns whether we have enough time to run in and punish,
     # given the current gamestate. Either a shine or upsmash
     def canpunish():
-        opponent_state = globals.opponent_state
+        opponent_state = globals.opponent_state2
 
         # Can't punish opponent in shield
         shieldactions = [Action.SHIELD_START, Action.SHIELD, Action.SHIELD_RELEASE, \
@@ -137,7 +137,7 @@ class Punish(Tactic):
         if opponent_state.action in shieldactions:
             return False
 
-        if globals.smashbot_state.off_stage:
+        if globals.smashbot_state2.off_stage:
             return False
 
         firefox = opponent_state.action == Action.SWORD_DANCE_3_LOW and opponent_state.character in [Character.FOX, Character.FALCO]
@@ -164,7 +164,7 @@ class Punish(Tactic):
         foxshinerange = 11.8
         inshinerange = globals.gamestate.distance < foxshinerange
 
-        if inshinerange and globals.smashbot_state.action in shineablestates:
+        if inshinerange and globals.smashbot_state2.action in shineablestates:
             return True
 
         #TODO: Wrap this up into a helper
@@ -179,8 +179,8 @@ class Punish(Tactic):
         return False
 
     def step(self):
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
         #If we can't interrupt the chain, just continue it
         if self.chain != None and not self.chain.interruptible:
             self.chain.step()

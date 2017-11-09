@@ -5,8 +5,8 @@ from Chains.chain import Chain
 
 class Multishine(Chain):
     def step(self):
-        smashbot_state = globals.smashbot_state
-        controller = globals.controller
+        smashbot_state = globals.smashbot_state2
+        controller = globals.controller2
 
         #If standing or turning, shine
         if smashbot_state.action == Action.STANDING or smashbot_state.action == Action.TURNING:

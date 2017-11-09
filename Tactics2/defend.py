@@ -7,8 +7,8 @@ from Tactics.tactic import Tactic
 
 class Defend(Tactic):
     def needsprojectiledefense():
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
         projectiles = globals.gamestate.projectiles
 
         if smashbot_state.invulnerability_left > 2:
@@ -63,8 +63,8 @@ class Defend(Tactic):
 
     def needsdefense():
         # Is opponent attacking?
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
         framedata = globals.framedata
 
         if smashbot_state.invulnerability_left > 2:
@@ -113,8 +113,8 @@ class Defend(Tactic):
             self.chain.step()
             return
 
-        opponent_state = globals.opponent_state
-        smashbot_state = globals.smashbot_state
+        opponent_state = globals.opponent_state2
+        smashbot_state = globals.smashbot_state2
         projectiles = globals.gamestate.projectiles
         framedata = globals.framedata
 
@@ -131,7 +131,7 @@ class Defend(Tactic):
                             opponent_state.action in [Action.MARTH_COUNTER, Action.PARASOL_FALLING]:
                         #TODO: Make this a chain
                         self.chain = None
-                        globals.controller.press_button(Button.BUTTON_L)
+                        globals.controller2.press_button(Button.BUTTON_L)
                         return
                     else:
                         self.chain = None

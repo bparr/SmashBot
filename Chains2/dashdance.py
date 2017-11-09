@@ -12,8 +12,8 @@ class DashDance(Chain):
 
     def step(self):
         gamestate = globals.gamestate
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
+        controller = globals.controller2
+        smashbot_state = globals.smashbot_state2
 
         #TODO: Moonwalk protection
         if smashbot_state.moonwalkwarning and controller.prev.main_stick[0] != 0.5:

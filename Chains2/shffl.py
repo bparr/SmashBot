@@ -16,9 +16,9 @@ class Shffl(Chain):
         self.direction = direction
 
     def step(self):
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
-        controller = globals.controller
+        smashbot_state = globals.smashbot_state2
+        opponent_state = globals.opponent_state2
+        controller = globals.controller2
 
         # If we're in knee bend, let go of jump. But move toward opponent
         if smashbot_state.action == Action.KNEE_BEND:
@@ -47,9 +47,9 @@ class Shffl(Chain):
             #   If we're close to the edge, angle back in
             x = 0.5
             edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)
-            if globals.opponent_state.x < 0:
+            if globals.opponent_state2.x < 0:
                 edge_x = -edge_x
-            edgedistance = abs(edge_x - globals.smashbot_state.x)
+            edgedistance = abs(edge_x - globals.smashbot_state2.x)
             if edgedistance < 15:
                 x = int(smashbot_state.x < 0)
 
@@ -83,9 +83,9 @@ class Shffl(Chain):
             #   If we're close to the edge, angle back in
             x = 0.5
             edge_x = melee.stages.edgegroundposition(globals.gamestate.stage)
-            if globals.opponent_state.x < 0:
+            if globals.opponent_state2.x < 0:
                 edge_x = -edge_x
-            edgedistance = abs(edge_x - globals.smashbot_state.x)
+            edgedistance = abs(edge_x - globals.smashbot_state2.x)
             if edgedistance < 15:
                 x = int(smashbot_state.x < 0)
 
