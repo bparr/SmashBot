@@ -118,7 +118,6 @@ while True:
                 if log:
                     log.log("Notes", "Exception thrown: " + repr(error) + " ", concat=True)
                 strategy = Bait()
-            controller.pipe.flush()
 
             try:
                 strategy2.step()
@@ -128,7 +127,6 @@ while True:
                 if log:
                     log.log("Notes", "Exception thrown: " + repr(error) + " ", concat=True)
                 strategy2 = Bait2()
-            opponent_controller.pipe.flush()
 
     #If we're at the character select screen, choose our character
     elif gamestate.menu_state == melee.enums.Menu.CHARACTER_SELECT:
@@ -146,6 +144,7 @@ while True:
             gamestate=gamestate, controller=controller)
     #Flush any button presses queued up
     controller.flush()
+    opponent_controller.flush()
 
     if log:
         log.log("Notes", "Goals: " + str(strategy), concat=True)
