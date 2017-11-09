@@ -64,7 +64,7 @@ class Bait(Strategy):
         # Difficulty 5 is a debug / training mode
         #   Don't do any attacks, and don't do any shielding
         #   Take attacks, DI, and recover
-        if globals.difficulty == 5:
+        if globals.difficulty2 == 5:
             self.picktactic(Tactics2.KeepDistance)
             return
 

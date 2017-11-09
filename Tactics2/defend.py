@@ -163,8 +163,8 @@ class Defend(Tactic):
         if globals.logger:
             globals.logger.log("Notes", "framesuntilhit: " + str(framesuntilhit) + " ", concat=True)
 
-        # Don't shine clank on the most optimal difficulty
-        if globals.difficulty >= 2:
+        # Don't shine clank on the most optimal difficulty2
+        if globals.difficulty2 >= 2:
             # If the attack has exactly one hitbox, then try shine clanking to defend
             if framedata.hitboxcount(opponent_state.character, opponent_state.action) == 1:
                 # It must be the first frame of the attack

@@ -24,3 +24,5 @@ def init(dolphin, smashbot_port, opponent_port):
     logger = dolphin.logger
     global difficulty
     difficulty = 4
+    global difficulty2
+    difficulty2 = 4

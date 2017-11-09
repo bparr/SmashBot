@@ -25,8 +25,8 @@ class Pressure(Tactic):
         # What sort of shield pressure should this be? Pick one at random
         rand = random.choice([1]*5 + [2]*3 + [3]*dashchance)
 
-        # On difficulty 1 and 2, only do dash dance
-        if globals.difficulty <= 2:
+        # On difficulty2 1 and 2, only do dash dance
+        if globals.difficulty2 <= 2:
             rand = 3
 
         # 50% chance of being SHFFL style pressure

@@ -491,7 +491,7 @@ class Edgeguard(Tactic):
                     smashbot_state.invulnerability_left <= 1:
 
                 # If we can, challenge their shine at the edge
-                if globals.difficulty >= 3 and edgegrabframes > 2:
+                if globals.difficulty2 >= 3 and edgegrabframes > 2:
                     self.pickchain(Chains2.Dropdownshine)
                     return
 
@@ -533,7 +533,7 @@ class Edgeguard(Tactic):
             randomgrab = False
             if random.randint(0, 20) == 0:
                 randomgrab = True
-            if globals.difficulty == 4:
+            if globals.difficulty2 == 4:
                 randomgrab = True
 
             # Can we challenge their ledge?

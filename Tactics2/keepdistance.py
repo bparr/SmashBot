@@ -30,8 +30,8 @@ class KeepDistance(Tactic):
         if character == Character.SAMUS:
             bufferzone = 15
 
-        # If we're in the first two difficulty levels, just get in there
-        if globals.difficulty > 2:
+        # If we're in the first two difficulty2 levels, just get in there
+        if globals.difficulty2 > 2:
             bufferzone = 0
         # Stay a little further out if they're invulnerable
         if globals.opponent_state2.invulnerability_left > 0:

@@ -31,7 +31,9 @@ parser.add_argument('--live', '-l',
 parser.add_argument('--debug', '-d', action='store_true',
                     help='Debug mode. Creates a CSV of all game state')
 parser.add_argument('--difficulty', '-i', type=int,
-                    help='Manually specify difficulty level of SmashBot')
+                    help='Manually specify difficulty level of Smashbot')
+parser.add_argument('--difficulty2', '-j', type=int,
+                    help='Manually specify difficulty level of smashBot')
 parser.add_argument('--nodolphin', '-n', action='store_true',
                     help='Don\'t run dolphin, (it is already running))')
 parser.add_argument('--iso_path', required=True,
@@ -104,6 +106,10 @@ while True:
             globals.difficulty = int(args.difficulty)
         else:
             globals.difficulty = globals.smashbot_state.stock
+        if args.difficulty2:
+            globals.difficulty2 = int(args.difficulty2)
+        else:
+            globals.difficulty2 = globals.smashbot_state2.stock
 
         if gamestate.stage != melee.enums.Stage.FINAL_DESTINATION:
             melee.techskill.multishine(ai_state=globals.smashbot_state, controller=controller)

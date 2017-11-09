@@ -38,8 +38,8 @@ class Infinite(Tactic):
         smashbot_state = globals.smashbot_state2
         isroll = globals.framedata.isroll(opponent_state.character, opponent_state.action)
 
-        # Only infinite on difficulty 1, 2, and 3
-        if globals.difficulty > 3:
+        # Only infinite on difficulty2 1, 2, and 3
+        if globals.difficulty2 > 3:
             return False
 
         if opponent_state.action in [Action.SHIELD_START, Action.SHIELD, \
