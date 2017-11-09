@@ -31,8 +31,8 @@ class Celebrate(Tactic):
 
         if smashbot_state.action == Action.EDGE_HANGING:
             self.chain = None
-            self.pickchain(Chains.DI, [0.5, 0.65])
+            self.pickchain(Chains2.DI, [0.5, 0.65])
             return
 
-        self.pickchain(Chains.Multishine)
+        self.pickchain(Chains2.Multishine)
         return

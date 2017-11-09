@@ -135,9 +135,9 @@ class Defend(Tactic):
                         return
                     else:
                         self.chain = None
-                        self.pickchain(Chains.DI, [0.5, 0.65])
+                        self.pickchain(Chains2.DI, [0.5, 0.65])
                         return
-                self.pickchain(Chains.Powershield)
+                self.pickchain(Chains2.Powershield)
                 return
 
         hitframe = framedata.inrange(opponent_state, smashbot_state, globals.gamestate.stage)
@@ -157,7 +157,7 @@ class Defend(Tactic):
         # Is the attack a grab? If so, spot dodge right away
         if globals.framedata.isgrab(opponent_state.character, opponent_state.action):
             if opponent_state.character != Character.SAMUS or framesuntilhit <= 2:
-                self.pickchain(Chains.SpotDodge)
+                self.pickchain(Chains2.SpotDodge)
                 return
 
         if globals.logger:
@@ -173,7 +173,7 @@ class Defend(Tactic):
                     if opponent_state.on_ground:
                         if (framesuntilhit == 2 and smashbot_state.action == Action.DASHING) or \
                                 (framesuntilhit == 1 and smashbot_state.action == Action.TURNING):
-                            self.pickchain(Chains.Waveshine)
+                            self.pickchain(Chains2.Waveshine)
                             return
 
         onfront = (opponent_state.x < smashbot_state.x) == opponent_state.facing
@@ -181,10 +181,10 @@ class Defend(Tactic):
         if framesuntilhit <= 2:
             if smashbot_state.action == Action.EDGE_HANGING:
                 self.chain = None
-                self.pickchain(Chains.DI, [0.5, 0.65])
+                self.pickchain(Chains2.DI, [0.5, 0.65])
                 return
             hold = framedata.hitboxcount(opponent_state.character, opponent_state.action) > 1
-            self.pickchain(Chains.Powershield, [hold])
+            self.pickchain(Chains2.Powershield, [hold])
         else:
             # 12 starting buffer for Fox's character model size
             bufferzone = 12
@@ -205,4 +205,4 @@ class Defend(Tactic):
                 pivotpoint -= bufferzone
                 # But don't run off the edge
                 pivotpoint = max(-melee.stages.edgegroundposition(globals.gamestate.stage) + 5, pivotpoint)
-            self.pickchain(Chains.DashDance, [pivotpoint])
+            self.pickchain(Chains2.DashDance, [pivotpoint])

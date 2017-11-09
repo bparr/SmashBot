@@ -76,4 +76,4 @@ class KeepDistance(Tactic):
         pivotpoint = max(pivotpoint, (-edge) + edgebuffer)
 
         self.chain = None
-        self.pickchain(Chains.DashDance, [pivotpoint])
+        self.pickchain(Chains2.DashDance, [pivotpoint])

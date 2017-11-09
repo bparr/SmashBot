@@ -105,7 +105,7 @@ class Infinite(Tactic):
             # emergency backup shine
             if framesleft == 1:
                 self.chain = None
-                self.pickchain(Chains.Waveshine)
+                self.pickchain(Chains2.Waveshine)
                 return
             onright = opponent_state.x < smashbot_state.x
             opponentspeed = opponent_state.speed_x_attack + opponent_state.speed_ground_x_self
@@ -118,17 +118,17 @@ class Infinite(Tactic):
             if smashbot_state.x < opponent_state.x < 0 or \
                     0 < opponent_state.x < smashbot_state.x:
                 self.chain = None
-                self.pickchain(Chains.Waveshine)
+                self.pickchain(Chains2.Waveshine)
                 return
 
             # If we are running away from our opponent, just shine now
             if (smashbot_state.speed_ground_x_self > 0) == onright:
                 self.chain = None
-                self.pickchain(Chains.Waveshine)
+                self.pickchain(Chains2.Waveshine)
                 return
 
         if smashbot_state.action == Action.LANDING_SPECIAL and smashbot_state.action_frame < 28:
-            self.pickchain(Chains.Nothing)
+            self.pickchain(Chains2.Nothing)
             return
-        self.pickchain(Chains.Run, [opponent_state.speed_x_attack > 0])
+        self.pickchain(Chains2.Run, [opponent_state.speed_x_attack > 0])
         return

@@ -54,7 +54,7 @@ class Retreat(Tactic):
             Action.DOWN_B_GROUND_START, Action.LANDING_SPECIAL, Action.SHIELD, Action.SHIELD_START, \
             Action.SHIELD_RELEASE, Action.SHIELD_STUN, Action.SHIELD_REFLECT]
         if needswavedash:
-            self.pickchain(Chains.Wavedash, [1, False])
+            self.pickchain(Chains2.Wavedash, [1, False])
             return
 
         bufferzone = 30
@@ -71,11 +71,11 @@ class Retreat(Tactic):
         edge = melee.stages.edgegroundposition(globals.gamestate.stage) - edgebuffer
         # If we are about to pivot near the edge, just grab the edge instead
         if abs(pivotpoint) > edge:
-            self.pickchain(Chains.Grabedge)
+            self.pickchain(Chains2.Grabedge)
             return
 
         pivotpoint = min(pivotpoint, edge)
         pivotpoint = max(pivotpoint, -edge)
 
         self.chain = None
-        self.pickchain(Chains.DashDance, [pivotpoint])
+        self.pickchain(Chains2.DashDance, [pivotpoint])

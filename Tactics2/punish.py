@@ -188,7 +188,7 @@ class Punish(Tactic):
 
         # TODO: This should be all inactionalbe animations, actually
         if smashbot_state.action == Action.THROW_DOWN:
-            self.pickchain(Chains.Nothing)
+            self.pickchain(Chains2.Nothing)
             return
 
         # Can we charge an upsmash right now?
@@ -295,21 +295,21 @@ class Punish(Tactic):
                     # NOTE: If we get here, we want to delete the chain and start over
                     #   Since the amount we need to charge may have changed
                     self.chain = None
-                    self.pickchain(Chains.SmashAttack, [framesleft-framesneeded-1, SMASH_DIRECTION.UP])
+                    self.pickchain(Chains2.SmashAttack, [framesleft-framesneeded-1, SMASH_DIRECTION.UP])
                     return
                 else:
                     # Do the bair if there's not enough time to wavedash, but we're facing away and out of shine range
                     #   This shouldn't happen often, but can if we're pushed away after powershield
                     offedge = melee.stages.edgegroundposition(globals.gamestate.stage) < abs(endposition)
                     if framesleft < 11 and distance > 9 and not offedge:
-                        self.pickchain(Chains.Shffl, [SHFFL_DIRECTION.BACK])
+                        self.pickchain(Chains2.Shffl, [SHFFL_DIRECTION.BACK])
                         return
             # If we're not in attack range, and can't run, then maybe we can wavedash in
             #   Now we need more time for the wavedash. 10 frames of lag, and 3 jumping
             framesneeded = 13
             if framesneeded <= framesleft:
                 if smashbot_state.action in shieldactions or smashbot_state.action in shineactions:
-                    self.pickchain(Chains.Wavedash)
+                    self.pickchain(Chains2.Wavedash)
                     return
 
         # We can't smash our opponent, so let's just shine instead. Do we have time for that?
@@ -333,7 +333,7 @@ class Punish(Tactic):
                     # If we are really close to the edge, wavedash straight down
                     if melee.stages.edgegroundposition(globals.gamestate.stage) - abs(smashbot_state.x) < 3:
                         x = 0
-                    self.pickchain(Chains.Waveshine, [x])
+                    self.pickchain(Chains2.Waveshine, [x])
                     return
             # We're in range, but don't have enough time. Let's try turning around to do a pivot.
             else:
@@ -344,9 +344,9 @@ class Punish(Tactic):
                 if smashbot_state.facing:
                     dashbuffer = -dashbuffer
                 pivotpoint += dashbuffer
-                self.pickchain(Chains.DashDance, [pivotpoint])
+                self.pickchain(Chains2.DashDance, [pivotpoint])
                 return
 
         # Kill the existing chain and start a new one
         self.chain = None
-        self.pickchain(Chains.DashDance, [endposition])
+        self.pickchain(Chains2.DashDance, [endposition])

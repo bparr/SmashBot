@@ -36,11 +36,11 @@ class Bait(Strategy):
         smashbot_state = globals.smashbot_state2
 
         # If we have stopped approaching, reset the state
-        if type(self.tactic) != Tactics.Approach:
+        if type(self.tactic) != Tactics2.Approach:
             self.approach = False
 
         if Mitigate.needsmitigation():
-            self.picktactic(Tactics.Mitigate)
+            self.picktactic(Tactics2.Mitigate)
             return
 
         if self.tactic and not self.tactic.isinteruptible():
@@ -50,55 +50,55 @@ class Bait(Strategy):
         # If we're stuck in a lag state, just do nothing. Trying an action might just
         #   buffer an input we don't want
         if Wait.shouldwait():
-            self.picktactic(Tactics.Wait)
+            self.picktactic(Tactics2.Wait)
             return
 
         if Recover.needsrecovery():
-            self.picktactic(Tactics.Recover)
+            self.picktactic(Tactics2.Recover)
             return
 
         if Celebrate.deservescelebration():
-            self.picktactic(Tactics.Celebrate)
+            self.picktactic(Tactics2.Celebrate)
             return
 
         # Difficulty 5 is a debug / training mode
         #   Don't do any attacks, and don't do any shielding
         #   Take attacks, DI, and recover
         if globals.difficulty == 5:
-            self.picktactic(Tactics.KeepDistance)
+            self.picktactic(Tactics2.KeepDistance)
             return
 
         if Defend.needsprojectiledefense():
-            self.picktactic(Tactics.Defend)
+            self.picktactic(Tactics2.Defend)
             return
 
         # If we can infinite our opponent, do that!
         if Infinite.caninfinite():
-            self.picktactic(Tactics.Infinite)
+            self.picktactic(Tactics2.Infinite)
             return
 
         # If we can punish our opponent for a laggy move, let's do that
         if Punish.canpunish():
-            self.picktactic(Tactics.Punish)
+            self.picktactic(Tactics2.Punish)
             return
 
         # Do we need to defend an attack?
         if Defend.needsdefense():
-            self.picktactic(Tactics.Defend)
+            self.picktactic(Tactics2.Defend)
             return
 
         # Can we edge guard them?
         if Edgeguard.canedgeguard():
-            self.picktactic(Tactics.Edgeguard)
+            self.picktactic(Tactics2.Edgeguard)
             return
 
         # Can we shield pressure them?
         if Pressure.canpressure():
-            self.picktactic(Tactics.Pressure)
+            self.picktactic(Tactics2.Pressure)
             return
 
         if Retreat.shouldretreat():
-            self.picktactic(Tactics.Retreat)
+            self.picktactic(Tactics2.Retreat)
             return
 
         # Is opponent starting a jump?
@@ -112,7 +112,7 @@ class Bait(Strategy):
             self.approach = True
 
         if (jumping and opponent_state.invulnerability_left <= 0) or self.approach:
-            self.picktactic(Tactics.Approach)
+            self.picktactic(Tactics2.Approach)
             return
 
-        self.picktactic(Tactics.KeepDistance)
+        self.picktactic(Tactics2.KeepDistance)

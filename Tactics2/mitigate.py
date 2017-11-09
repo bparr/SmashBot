@@ -44,7 +44,7 @@ class Mitigate(Tactic):
         # Did we get grabbed?
         if smashbot_state.action in [Action.GRABBED, Action.GRAB_PUMMELED, Action.GRAB_PULL, \
                 Action.GRAB_PUMMELED, Action.GRAB_PULLING_HIGH, Action.GRABBED_WAIT_HIGH, Action.PUMMELED_HIGH]:
-            self.pickchain(Chains.Struggle)
+            self.pickchain(Chains2.Struggle)
             return
 
         # Smash DI
@@ -72,7 +72,7 @@ class Mitigate(Tactic):
                         if smashbot_state.x < 0:
                             x = 0
             self.chain = None
-            self.pickchain(Chains.DI, [x, y])
+            self.pickchain(Chains2.DI, [x, y])
             return
 
         # Tech if we need to
@@ -94,7 +94,7 @@ class Mitigate(Tactic):
                     break
             # Do the tech
             if framesuntillanding < 4:
-                self.pickchain(Chains.Tech)
+                self.pickchain(Chains2.Tech)
                 return
 
         # Regular DI
@@ -114,14 +114,14 @@ class Mitigate(Tactic):
                 if smashbot_state.x < 0:
                     x = 0
             self.chain = None
-            self.pickchain(Chains.DI, [x, y])
+            self.pickchain(Chains2.DI, [x, y])
             return
         if smashbot_state.action == Action.TUMBLING:
             x = globals.gamestate.frame % 2
             self.chain = None
-            self.pickchain(Chains.DI, [x, 0.5])
+            self.pickchain(Chains2.DI, [x, 0.5])
             return
 
         # DI randomly as a fallback
-        self.pickchain(Chains.DI, [self.randomdi, 0.5])
+        self.pickchain(Chains2.DI, [self.randomdi, 0.5])
         return

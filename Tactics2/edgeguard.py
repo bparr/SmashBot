@@ -364,11 +364,11 @@ class Edgeguard(Tactic):
             return
 
         if Dropdownshine.inrange():
-            self.pickchain(Chains.Dropdownshine)
+            self.pickchain(Chains2.Dropdownshine)
             return
 
         if smashbot_state.action == Action.EDGE_CATCHING:
-            self.pickchain(Chains.Nothing)
+            self.pickchain(Chains2.Nothing)
             return
 
         # How many frames will it take to get to our opponent right now?
@@ -393,7 +393,7 @@ class Edgeguard(Tactic):
                     return
                 else:
                     self.chain = None
-                    self.pickchain(Chains.DI, [0.5, 0.65])
+                    self.pickchain(Chains2.DI, [0.5, 0.65])
                     return
 
         # Special exception for Fox/Falco illusion
@@ -401,7 +401,7 @@ class Edgeguard(Tactic):
         if opponent_state.character in [Character.FOX, Character.FALCO]:
             if opponent_state.action in [Action.SWORD_DANCE_2_MID]:
                 self.chain = None
-                self.pickchain(Chains.DI, [0.5, 0.65])
+                self.pickchain(Chains2.DI, [0.5, 0.65])
                 return
 
         # What recovery options does opponent have?
@@ -477,12 +477,12 @@ class Edgeguard(Tactic):
                 edgedistance = abs(opponent_state.x) - (melee.stages.edgegroundposition(globals.gamestate.stage) + 15)
                 inrange = (-5 > opponent_state.y > -23) and (edgedistance < 15)
                 if opponent_state.action == Action.SWORD_DANCE_3_LOW and opponent_state.action_frame <= 5 and not inrange:
-                    self.pickchain(Chains.Edgestall)
+                    self.pickchain(Chains2.Edgestall)
                     return
             # We must be on the first frame, or else it's dangerous
             elif smashbot_state.action == Action.EDGE_HANGING and smashbot_state.action_frame == 1:
                 if edgegrabframes > 29 and smashbot_state.invulnerability_left >= 29:
-                    self.pickchain(Chains.Edgestall)
+                    self.pickchain(Chains2.Edgestall)
                     return
 
             #  We are in danger of being attacked!
@@ -492,11 +492,11 @@ class Edgeguard(Tactic):
 
                 # If we can, challenge their shine at the edge
                 if globals.difficulty >= 3 and edgegrabframes > 2:
-                    self.pickchain(Chains.Dropdownshine)
+                    self.pickchain(Chains2.Dropdownshine)
                     return
 
                 self.chain = None
-                self.pickchain(Chains.DI, [0.5, 0.65])
+                self.pickchain(Chains2.DI, [0.5, 0.65])
                 return
             framesleft = Punish.framesleft()
 
@@ -507,22 +507,22 @@ class Edgeguard(Tactic):
             # Shine them, as long as they aren't attacking right now
             frameadvantage = framesleft > 2 or smashbot_state.invulnerability_left > 2
             if globals.gamestate.distance < 11.8 and edgegrabframes > 2 and frameadvantage and not samusupbinvuln:
-                self.pickchain(Chains.Dropdownshine)
+                self.pickchain(Chains2.Dropdownshine)
                 return
 
             # Illusion high
             if Edgeguard.illusionhighframes() <= 5:
                 if smashbot_state.invulnerability_left > 7:
-                    self.pickchain(Chains.Edgebair)
+                    self.pickchain(Chains2.Edgebair)
                     return
 
             if Edgeguard.firefoxhighframes() <= 5:
-                self.pickchain(Chains.Edgebair)
+                self.pickchain(Chains2.Edgebair)
                 return
 
             # Do nothing
             self.chain = None
-            self.pickchain(Chains.Nothing)
+            self.pickchain(Chains2.Nothing)
             return
 
         # We are on the stage
@@ -543,7 +543,7 @@ class Edgeguard(Tactic):
                     wavedash = True
                     if globals.framedata.isattack(opponent_state.character, opponent_state.action):
                         wavedash = False
-                    self.pickchain(Chains.Grabedge, [wavedash])
+                    self.pickchain(Chains2.Grabedge, [wavedash])
                     return
 
             # Dash dance near the edge
@@ -554,4 +554,4 @@ class Edgeguard(Tactic):
             pivotpoint = max(pivotpoint, (-edge_x) + edgebuffer)
 
             self.chain = None
-            self.pickchain(Chains.DashDance, [pivotpoint])
+            self.pickchain(Chains2.DashDance, [pivotpoint])

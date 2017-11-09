@@ -68,9 +68,9 @@ class Pressure(Tactic):
             # Don't try to dashdance if we know we can't
             if smashbot_state.action in [Action.DOWN_B_GROUND_START, Action.DOWN_B_GROUND]:
                 distance = max(globals.gamestate.distance / 20, 1)
-                self.pickchain(Chains.Wavedash, [distance])
+                self.pickchain(Chains2.Wavedash, [distance])
                 return
-            self.pickchain(Chains.DashDance, [opponent_state.x])
+            self.pickchain(Chains2.DashDance, [opponent_state.x])
             return
 
         # Keep a running count of how many shines we've done
@@ -96,7 +96,7 @@ class Pressure(Tactic):
         if not inshinerange and candash:
             # Dash dance at our opponent
             self.chain = None
-            self.pickchain(Chains.DashDance, [opponent_state.x])
+            self.pickchain(Chains2.DashDance, [opponent_state.x])
             return
 
         neutral = smashbot_state.action in [Action.STANDING, Action.DASHING, Action.TURNING, \
@@ -109,7 +109,7 @@ class Pressure(Tactic):
 
         # Multishine if we're in range, facing our opponent and haven't used up all our shines
         if inshinerange and facingopponent and (self.shinecount < self.shinemax):
-            self.pickchain(Chains.Multishine)
+            self.pickchain(Chains2.Multishine)
             return
         # Here's where things get complicated...
         else:
@@ -122,12 +122,12 @@ class Pressure(Tactic):
                     if (opponent_state.x < smashbot_state.x) == opponent_state.facing:
                         x = 1.0
                     self.chain = None
-                    self.pickchain(Chains.Waveshine, [x])
+                    self.pickchain(Chains2.Waveshine, [x])
                     shinecount = 0
                     return
                 if self.shffl:
                     self.chain = None
-                    self.pickchain(Chains.Shffl)
+                    self.pickchain(Chains2.Shffl)
                     shinecount = 0
                     return
 
@@ -136,9 +136,9 @@ class Pressure(Tactic):
 
             # Grab opponent
             if ingrabrange and facingopponent and (self.shinecount >= self.shinemax):
-                self.pickchain(Chains.GrabAndThrow, [THROW_DIRECTION.DOWN])
+                self.pickchain(Chains2.GrabAndThrow, [THROW_DIRECTION.DOWN])
                 return
 
         # If we fall through, then just dashdance at our opponent
         self.chain = None
-        self.pickchain(Chains.DashDance, [opponent_state.x])
+        self.pickchain(Chains2.DashDance, [opponent_state.x])

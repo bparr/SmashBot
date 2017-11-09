@@ -72,7 +72,7 @@ class Recover(Tactic):
             return
 
         if smashbot_state.action in [Action.EDGE_HANGING, Action.EDGE_CATCHING]:
-            self.pickchain(Chains.Edgedash)
+            self.pickchain(Chains2.Edgedash)
             return
 
         # If we can't possibly illusion to recover, don't try
@@ -91,7 +91,7 @@ class Recover(Tactic):
             if smashbot_state.x < 0:
                 x = 1
             self.chain = None
-            self.pickchain(Chains.DI, [x, 0.5])
+            self.pickchain(Chains2.DI, [x, 0.5])
             return
 
         # Are we facing the wrong way in shine? Turn around
@@ -100,7 +100,7 @@ class Recover(Tactic):
             if smashbot_state.x < 0:
                 x = 1
             self.chain = None
-            self.pickchain(Chains.DI, [x, 0.5])
+            self.pickchain(Chains2.DI, [x, 0.5])
             return
 
         # If we can just do nothing and grab the edge, do that
@@ -108,7 +108,7 @@ class Recover(Tactic):
             # Do a Fastfall if we're not already
             if smashbot_state.action == Action.FALLING and smashbot_state.speed_y_self > -3.3:
                 self.chain = None
-                self.pickchain(Chains.DI, [0.5, 0])
+                self.pickchain(Chains2.DI, [0.5, 0])
                 return
 
             # If we are currently moving away from the stage, DI in
@@ -117,14 +117,14 @@ class Recover(Tactic):
                 if smashbot_state.x < 0:
                     x = 1
                 self.chain = None
-                self.pickchain(Chains.DI, [x, 0.5])
+                self.pickchain(Chains2.DI, [x, 0.5])
                 return
             else:
-                self.pickchain(Chains.Nothing)
+                self.pickchain(Chains2.Nothing)
                 return
 
         if (-15 < smashbot_state.y < -5) and (diff_x < 10) and facinginwards:
-            self.pickchain(Chains.Firefox, [FIREFOX.MEDIUM])
+            self.pickchain(Chains2.Firefox, [FIREFOX.MEDIUM])
             return
 
         # If we're ligned up, do the illusion
@@ -138,12 +138,12 @@ class Recover(Tactic):
             if diff_x < 20:
                 length = SHORTEN.SHORT
 
-            self.pickchain(Chains.Illusion, [length])
+            self.pickchain(Chains2.Illusion, [length])
             return
 
         # First jump back to the stage if we're low
         if smashbot_state.jumps_left > 0 and smashbot_state.y < -20:
-            self.pickchain(Chains.Jump)
+            self.pickchain(Chains2.Jump)
             return
 
         # If we're high and doing an Illusion, just let ourselves fall into place
@@ -153,12 +153,12 @@ class Recover(Tactic):
             if smashbot_state.x < 0:
                 x = 1
             self.chain = None
-            self.pickchain(Chains.DI, [x, 0.5])
+            self.pickchain(Chains2.DI, [x, 0.5])
             return
 
         # Don't firefox if we're super high up, wait a little to come down
         if smashbot_state.speed_y_self < 0 and smashbot_state.y < 30:
-            self.pickchain(Chains.Firefox)
+            self.pickchain(Chains2.Firefox)
             return
 
         # DI into the stage
@@ -166,4 +166,4 @@ class Recover(Tactic):
         if smashbot_state.x < 0:
             x = 1
         self.chain = None
-        self.pickchain(Chains.DI, [x, 0.5])
+        self.pickchain(Chains2.DI, [x, 0.5])

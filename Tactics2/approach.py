@@ -15,8 +15,8 @@ class Approach(Tactic):
             Action.DOWN_B_GROUND_START, Action.LANDING_SPECIAL, Action.SHIELD, Action.SHIELD_START, \
             Action.SHIELD_RELEASE, Action.SHIELD_STUN, Action.SHIELD_REFLECT]
         if needswavedash:
-            self.pickchain(Chains.Wavedash)
+            self.pickchain(Chains2.Wavedash)
             return
 
         self.chain = None
-        self.pickchain(Chains.DashDance, [globals.opponent_state2.x])
+        self.pickchain(Chains2.DashDance, [globals.opponent_state2.x])

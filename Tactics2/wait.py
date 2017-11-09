@@ -24,5 +24,5 @@ class Wait(Tactic):
         return False
 
     def step(self):
-        self.pickchain(Chains.Nothing)
+        self.pickchain(Chains2.Nothing)
         return
