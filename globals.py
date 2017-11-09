@@ -6,6 +6,8 @@ def init(dolphin, smashbot_port, opponent_port):
     gamestate = melee.gamestate.GameState(dolphin)
     global controller
     controller = melee.controller.Controller(port=smashbot_port, dolphin=dolphin)
+    global opponent_controller
+    opponent_controller = melee.controller.Controller(port=opponent_port, dolphin=dolphin)
     global smashbot_state
     smashbot_state = gamestate.player[smashbot_port]
     global opponent_state
