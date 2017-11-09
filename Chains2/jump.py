@@ -1,7 +1,7 @@
 import melee
 import globals
 from melee.enums import Action, Button
-from Chains.chain import Chain
+from Chains2.chain import Chain
 
 class Jump(Chain):
     def __init__(self, x=0.5):

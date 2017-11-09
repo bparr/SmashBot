@@ -1,7 +1,7 @@
 import melee
 import globals
 import random
-from Chains.chain import Chain
+from Chains2.chain import Chain
 from melee.enums import Action, Button
 
 class DashDance(Chain):

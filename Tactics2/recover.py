@@ -1,12 +1,12 @@
 import melee
 import globals
-import Chains
+import Chains2
 import random
 import math
 from melee.enums import Action
-from Tactics.tactic import Tactic
-from Chains.firefox import FIREFOX
-from Chains.illusion import SHORTEN
+from Tactics2.tactic import Tactic
+from Chains2.firefox import FIREFOX
+from Chains2.illusion import SHORTEN
 
 class Recover(Tactic):
     # Do we need to recover?

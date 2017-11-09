@@ -1,13 +1,13 @@
 import melee
 import globals
-import Chains
+import Chains2
 import math
 import random
 from melee.enums import Action, Button, Character
-from Tactics.tactic import Tactic
-from Tactics.punish import Punish
-from Tactics.defend import Defend
-from Chains.dropdownshine import Dropdownshine
+from Tactics2.tactic import Tactic
+from Tactics2.punish import Punish
+from Tactics2.defend import Defend
+from Chains2.dropdownshine import Dropdownshine
 
 class Edgeguard(Tactic):
     def __init__(self):

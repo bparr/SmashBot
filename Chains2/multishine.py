@@ -1,7 +1,7 @@
 import melee
 import globals
 from melee.enums import Action, Button
-from Chains.chain import Chain
+from Chains2.chain import Chain
 
 class Multishine(Chain):
     def step(self):

@@ -1,9 +1,9 @@
 import melee
 import globals
-import Chains
+import Chains2
 import random
 from melee.enums import Action, Button
-from Tactics.tactic import Tactic
+from Tactics2.tactic import Tactic
 
 class Mitigate(Tactic):
     def __init__(self):

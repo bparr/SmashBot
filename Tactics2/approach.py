@@ -1,8 +1,8 @@
 import melee
 import globals
-import Chains
+import Chains2
 from melee.enums import Action, Button
-from Tactics.tactic import Tactic
+from Tactics2.tactic import Tactic
 
 class Approach(Tactic):
     def step(self):

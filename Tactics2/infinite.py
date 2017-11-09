@@ -1,10 +1,10 @@
 import melee
 import globals
-import Chains
+import Chains2
 from melee.enums import Action
-from Tactics.tactic import Tactic
-from Chains.smashattack import SMASH_DIRECTION
-from Tactics.punish import Punish
+from Tactics2.tactic import Tactic
+from Chains2.smashattack import SMASH_DIRECTION
+from Tactics2.punish import Punish
 from melee.enums import Character
 
 class Infinite(Tactic):

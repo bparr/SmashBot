@@ -1,7 +1,7 @@
 import melee
 import globals
 from melee.enums import Button
-from Chains.chain import Chain
+from Chains2.chain import Chain
 
 # Struggle out of a grab
 class Struggle(Chain):

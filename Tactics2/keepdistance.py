@@ -1,7 +1,7 @@
 import melee
 import globals
-import Chains
-from Tactics.tactic import Tactic
+import Chains2
+from Tactics2.tactic import Tactic
 from melee.enums import Character, Action
 
 # Dash dance a just a little outside our opponont's range

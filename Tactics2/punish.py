@@ -1,11 +1,11 @@
 import melee
 import globals
-import Chains
+import Chains2
 import math
 from melee.enums import Action, Button, Character
-from Tactics.tactic import Tactic
-from Chains.smashattack import SMASH_DIRECTION
-from Chains.shffl import SHFFL_DIRECTION
+from Tactics2.tactic import Tactic
+from Chains2.smashattack import SMASH_DIRECTION
+from Chains2.shffl import SHFFL_DIRECTION
 
 class Punish(Tactic):
     # How many frames do we have to work with for the punish

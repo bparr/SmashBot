@@ -1,7 +1,7 @@
 import melee
 import globals
 from melee.enums import Action, Button
-from Chains.chain import Chain
+from Chains2.chain import Chain
 from enum import Enum
 
 class THROW_DIRECTION(Enum):

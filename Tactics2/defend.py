@@ -1,9 +1,9 @@
 import melee
 import globals
-import Chains
+import Chains2
 import math
 from melee.enums import Action, Button, Character
-from Tactics.tactic import Tactic
+from Tactics2.tactic import Tactic
 
 class Defend(Tactic):
     def needsprojectiledefense():

@@ -1,19 +1,19 @@
 import melee
 import globals
-import Tactics
+import Tactics2
 import random
 from melee.enums import Action, Button
-from Strategies.strategy import Strategy
-from Tactics.punish import Punish
-from Tactics.pressure import Pressure
-from Tactics.defend import Defend
-from Tactics.recover import Recover
-from Tactics.mitigate import Mitigate
-from Tactics.edgeguard import Edgeguard
-from Tactics.infinite import Infinite
-from Tactics.celebrate import Celebrate
-from Tactics.wait import Wait
-from Tactics.retreat import Retreat
+from Strategies2.strategy import Strategy
+from Tactics2.punish import Punish
+from Tactics2.pressure import Pressure
+from Tactics2.defend import Defend
+from Tactics2.recover import Recover
+from Tactics2.mitigate import Mitigate
+from Tactics2.edgeguard import Edgeguard
+from Tactics2.infinite import Infinite
+from Tactics2.celebrate import Celebrate
+from Tactics2.wait import Wait
+from Tactics2.retreat import Retreat
 
 class Bait(Strategy):
     def __init__(self):

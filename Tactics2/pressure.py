@@ -1,10 +1,10 @@
 import melee
 import globals
-import Chains
+import Chains2
 import random
 from melee.enums import Action, Button
-from Tactics.tactic import Tactic
-from Chains.grabandthrow import THROW_DIRECTION
+from Tactics2.tactic import Tactic
+from Chains2.grabandthrow import THROW_DIRECTION
 
 # Shield pressure
 class Pressure(Tactic):

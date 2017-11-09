@@ -1,6 +1,6 @@
 import melee
 import globals
-from Chains.chain import Chain
+from Chains2.chain import Chain
 
 class Nothing(Chain):
     def step(self):

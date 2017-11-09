@@ -1,7 +1,7 @@
 import melee
 import globals
 from melee.enums import Action, Button, Character
-from Chains.chain import Chain
+from Chains2.chain import Chain
 
 # Dropdownshine
 class Dropdownshine(Chain):

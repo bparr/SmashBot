@@ -1,8 +1,8 @@
 import melee
-import Chains
+import Chains2
 import globals
 from melee.enums import Action, Character
-from Tactics.tactic import Tactic
+from Tactics2.tactic import Tactic
 
 class Celebrate(Tactic):
     def deservescelebration():

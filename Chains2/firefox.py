@@ -2,7 +2,7 @@ import melee
 import globals
 import random
 from melee.enums import Action, Button
-from Chains.chain import Chain
+from Chains2.chain import Chain
 from enum import Enum
 
 class FIREFOX(Enum):

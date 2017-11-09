@@ -1,8 +1,8 @@
 import melee
 import globals
-import Chains
+import Chains2
 from melee.enums import Action, Character
-from Tactics.tactic import Tactic
+from Tactics2.tactic import Tactic
 
 class Retreat(Tactic):
     def shouldretreat():

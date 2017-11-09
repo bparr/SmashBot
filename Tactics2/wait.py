@@ -1,7 +1,7 @@
 import melee
-import Chains
+import Chains2
 import globals
-from Tactics.tactic import Tactic
+from Tactics2.tactic import Tactic
 from melee.enums import Action
 
 class Wait(Tactic):
