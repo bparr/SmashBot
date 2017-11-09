@@ -5,6 +5,7 @@ import signal
 import sys
 
 from Strategies.bait import Bait
+from Strategies2.bait import Bait as Bait2
 
 import globals
 
@@ -85,7 +86,7 @@ controller.connect()
 opponent_controller.connect()
 
 strategy = Bait()
-strategy2 = Bait()
+strategy2 = Bait2()
 
 supportedcharacters = [melee.enums.Character.PEACH, melee.enums.Character.CPTFALCON, melee.enums.Character.FALCO, \
     melee.enums.Character.FOX, melee.enums.Character.SAMUS, melee.enums.Character.ZELDA, melee.enums.Character.SHEIK, \
@@ -117,6 +118,17 @@ while True:
                 if log:
                     log.log("Notes", "Exception thrown: " + repr(error) + " ", concat=True)
                 strategy = Bait()
+            controller.pipe.flush()
+
+            try:
+                strategy2.step()
+            except Exception as error:
+                # Do nothing in case of error thrown!
+                opponent_controller.empty_input()
+                if log:
+                    log.log("Notes", "Exception thrown: " + repr(error) + " ", concat=True)
+                strategy2 = Bait2()
+            opponent_controller.pipe.flush()
 
     #If we're at the character select screen, choose our character
     elif gamestate.menu_state == melee.enums.Menu.CHARACTER_SELECT:
@@ -137,5 +149,6 @@ while True:
 
     if log:
         log.log("Notes", "Goals: " + str(strategy), concat=True)
+        log.log("Notes", "Goals: " + str(strategy2), concat=True)
         log.logframe(gamestate)
         log.writeframe()
