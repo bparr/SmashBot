@@ -33,6 +33,8 @@ parser.add_argument('--difficulty', '-i', type=int,
                     help='Manually specify difficulty level of SmashBot')
 parser.add_argument('--nodolphin', '-n', action='store_true',
                     help='Don\'t run dolphin, (it is already running))')
+parser.add_argument('--iso_path', required=True,
+                    help='Path to SSBM v1.02 ISO.')
 
 args = parser.parse_args()
 
@@ -72,7 +74,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 #Run dolphin and render the output
 if not args.nodolphin:
-    dolphin.run(render=True)
+    dolphin.run(render=True, iso_path=args.iso_path)
 
 #Plug our controller in
 #   Due to how named pipes work, this has to come AFTER running dolphin
