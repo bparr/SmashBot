@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import melee
+import copy
 import argparse
 import signal
 import sys
@@ -90,6 +91,9 @@ opponent_controller.connect()
 strategy = Bait()
 strategy2 = Bait2()
 
+strategy_copy = None
+strategy2_copy = None
+
 supportedcharacters = [melee.enums.Character.PEACH, melee.enums.Character.CPTFALCON, melee.enums.Character.FALCO, \
     melee.enums.Character.FOX, melee.enums.Character.SAMUS, melee.enums.Character.ZELDA, melee.enums.Character.SHEIK, \
     melee.enums.Character.PIKACHU, melee.enums.Character.JIGGLYPUFF, melee.enums.Character.MARTH]
@@ -115,6 +119,26 @@ while True:
             melee.techskill.multishine(ai_state=globals.smashbot_state, controller=controller)
         elif globals.opponent_state.character not in supportedcharacters:
             melee.techskill.multishine(ai_state=globals.smashbot_state, controller=controller)
+        elif gamestate.frame == 200:
+            print('Creating saved state')
+            strategy_copy = copy.deepcopy(strategy)
+            strategy2_copy = copy.deepcopy(strategy2)
+            controller.empty_input()
+            opponent_controller.empty_input()
+        elif gamestate.frame == 201:
+            opponent_controller.press_button(melee.enums.Button.BUTTON_D_RIGHT)
+        elif gamestate.frame == 202:
+            opponent_controller.press_button(melee.enums.Button.BUTTON_D_RIGHT)
+        elif gamestate.frame > 200 and gamestate.frame % 200 == 0:
+            print('Loading saved state')
+            controller.empty_input()
+            opponent_controller.empty_input()
+        elif gamestate.frame > 200 and gamestate.frame % 200 == 1:
+            strategy = copy.deepcopy(strategy_copy)
+            strategy2 = copy.deepcopy(strategy2_copy)
+            opponent_controller.press_button(melee.enums.Button.BUTTON_D_LEFT)
+        elif gamestate.frame > 200 and gamestate.frame % 200 == 2:
+            opponent_controller.release_button(melee.enums.Button.BUTTON_D_LEFT)
         else:
             try:
                 strategy.step()
