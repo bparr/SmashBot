@@ -119,27 +119,35 @@ while True:
             melee.techskill.multishine(ai_state=globals.smashbot_state, controller=controller)
         elif globals.opponent_state.character not in supportedcharacters:
             melee.techskill.multishine(ai_state=globals.smashbot_state, controller=controller)
-        elif gamestate.frame == 200:
+        elif gamestate.frame == 197:
             print('Creating saved state')
             strategy_copy = copy.deepcopy(strategy)
             strategy2_copy = copy.deepcopy(strategy2)
             controller.empty_input()
             opponent_controller.empty_input()
-        elif gamestate.frame == 201:
+            print(gamestate.frame, gamestate.ai_state.x)
+        elif gamestate.frame == 198:
             opponent_controller.press_button(melee.enums.Button.BUTTON_D_RIGHT)
-        elif gamestate.frame == 202:
+            print(gamestate.frame, gamestate.ai_state.x)
+        elif gamestate.frame == 199:
             opponent_controller.press_button(melee.enums.Button.BUTTON_D_RIGHT)
-        elif gamestate.frame > 200 and gamestate.frame % 200 == 0:
+            print(gamestate.frame, gamestate.ai_state.x)
+        elif gamestate.frame >= 200 and gamestate.frame % 200 == 0:
             print('Loading saved state')
             controller.empty_input()
             opponent_controller.empty_input()
-        elif gamestate.frame > 200 and gamestate.frame % 200 == 1:
+            print(gamestate.frame, gamestate.ai_state.x)
+        elif gamestate.frame >= 200 and gamestate.frame % 200 == 1:
             strategy = copy.deepcopy(strategy_copy)
             strategy2 = copy.deepcopy(strategy2_copy)
             opponent_controller.press_button(melee.enums.Button.BUTTON_D_LEFT)
-        elif gamestate.frame > 200 and gamestate.frame % 200 == 2:
-            opponent_controller.release_button(melee.enums.Button.BUTTON_D_LEFT)
+            print(gamestate.frame, gamestate.ai_state.x)
         else:
+            if gamestate.frame >= 200 and gamestate.frame % 200 == 2:
+                opponent_controller.release_button(melee.enums.Button.BUTTON_D_LEFT)
+                print(gamestate.frame, gamestate.ai_state.x)
+            if gamestate.frame >= 200 and gamestate.frame % 200 == 3:
+                print(gamestate.frame, gamestate.ai_state.x)
             try:
                 strategy.step()
             except Exception as error:
