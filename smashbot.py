@@ -56,8 +56,10 @@ if args.live:
     opponent_type = melee.enums.ControllerType.STANDARD
 
 #Create our Dolphin object. This will be the primary object that we will interface with
+is_20xx = ('20xx' in args.iso_path.lower())
+print('is_20xx:', is_20xx)
 dolphin = melee.dolphin.Dolphin(ai_port=args.port, opponent_port=args.opponent,
-    opponent_type=opponent_type, logger=log)
+    opponent_type=opponent_type, logger=log, is_20xx=is_20xx)
 
 #initialize our global objects
 globals.init(dolphin, args.port, args.opponent)
