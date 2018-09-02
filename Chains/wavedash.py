@@ -1,5 +1,4 @@
 import melee
-import globals
 from melee.enums import Action, Button
 from Chains.chain import Chain
 
@@ -13,9 +12,9 @@ class Wavedash(Chain):
         self.towards = towards
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = self.controller
+        smashbot_state = self.smashbot_state
+        opponent_state = self.opponent_state
 
         # If we're in shield stun, just wait
         if smashbot_state.action == Action.SHIELD_STUN:
@@ -67,7 +66,7 @@ class Wavedash(Chain):
             x = (self.distance / 2) + .5
             if onleft != self.towards:
                 x = -x
-            controller.tilt_analog(Button.BUTTON_MAIN, x, .2);
+            controller.tilt_analog(Button.BUTTON_MAIN, x, .2)
             return
 
         # If we're sliding and have shined, then we're all done here

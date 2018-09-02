@@ -1,5 +1,4 @@
 import melee
-import globals
 import random
 from melee.enums import Action, Button
 from Chains.chain import Chain
@@ -20,8 +19,8 @@ class Tech(Chain):
             self.direction = direction
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
+        controller = self.controller
+        smashbot_state = self.smashbot_state
 
         # If we're on the ground, we're done here
         if smashbot_state.on_ground:
@@ -30,15 +29,15 @@ class Tech(Chain):
             return
 
         if self.direction == TECH_DIRECTION.TECH_IN_PLACE:
-            controller.press_button(Button.BUTTON_L);
+            controller.press_button(Button.BUTTON_L)
             controller.tilt_analog(Button.BUTTON_MAIN, .5, .5)
             return
         elif self.direction == TECH_DIRECTION.TECH_FORWARD:
-            controller.press_button(Button.BUTTON_L);
+            controller.press_button(Button.BUTTON_L)
             controller.tilt_analog(Button.BUTTON_MAIN, int(smashbot_state.facing), .5)
             return
         elif self.direction == TECH_DIRECTION.TECH_BACK:
-            controller.press_button(Button.BUTTON_L);
+            controller.press_button(Button.BUTTON_L)
             controller.tilt_analog(Button.BUTTON_MAIN, int(not smashbot_state.facing), .5)
             return
 

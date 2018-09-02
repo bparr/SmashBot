@@ -1,5 +1,4 @@
 import melee
-import globals
 from melee.enums import Action, Button
 from Chains.chain import Chain
 from enum import Enum
@@ -16,8 +15,8 @@ class SmashAttack(Chain):
         self.frames_charged = 0
 
     def step(self):
-        smashbot_state = globals.smashbot_state
-        controller = globals.controller
+        smashbot_state = self.smashbot_state
+        controller = self.controller
 
         if smashbot_state.action == Action.LANDING_SPECIAL:
             self.interruptible = True
@@ -28,7 +27,7 @@ class SmashAttack(Chain):
         jumpcancelactions = [Action.SHIELD, Action.SHIELD_RELEASE, Action.DASHING, Action.RUNNING]
         if smashbot_state.action in jumpcancelactions:
             self.interruptible = False
-            controller.press_button(Button.BUTTON_Y);
+            controller.press_button(Button.BUTTON_Y)
             return
 
         # Jump out of shine
@@ -45,7 +44,7 @@ class SmashAttack(Chain):
             if self.frames_charged < self.charge:
                 self.interruptible = False
                 self.frames_charged += 1
-                controller.press_button(Button.BUTTON_A);
+                controller.press_button(Button.BUTTON_A)
                 return
             # Are we done with a smash and just need to quit?
             else:
@@ -60,7 +59,7 @@ class SmashAttack(Chain):
             return
 
         self.interruptible = False
-        controller.press_button(Button.BUTTON_A);
+        controller.press_button(Button.BUTTON_A)
         if self.direction == SMASH_DIRECTION.UP:
             controller.tilt_analog(Button.BUTTON_MAIN, .5, 1)
         elif self.direction == SMASH_DIRECTION.DOWN:

@@ -1,5 +1,4 @@
 import melee
-import globals
 from melee.enums import Action, Button, Character
 from Chains.chain import Chain
 
@@ -8,9 +7,9 @@ class Powershield(Chain):
         self.hold = hold
 
     def step(self):
-        controller = globals.controller
-        smashbot_state = globals.smashbot_state
-        opponent_state = globals.opponent_state
+        controller = self.controller
+        smashbot_state = self.smashbot_state
+        opponent_state = self.opponent_state
 
         # Don't try to shield in the air
         if not smashbot_state.on_ground:
@@ -22,9 +21,9 @@ class Powershield(Chain):
         firefox = opponent_state.action in [Action.SWORD_DANCE_4_HIGH, Action.SWORD_DANCE_4_MID] and opponent_state.character in [Character.FOX, Character.FALCO]
 
         # If we get to cooldown, let go
-        attackstate = globals.framedata.attackstate_simple(globals.opponent_state)
+        attackstate = self.framedata.attackstate_simple(self.opponent_state)
         if attackstate in [melee.enums.AttackState.COOLDOWN, melee.enums.AttackState.NOT_ATTACKING] \
-                and len(globals.gamestate.projectiles) == 0 and not firefox:
+                and len(self.gamestate.projectiles) == 0 and not firefox:
             self.interruptible = True
             controller.empty_input()
             return
@@ -34,7 +33,7 @@ class Powershield(Chain):
         if self.hold:
             self.interruptible = False
             controller.tilt_analog(Button.BUTTON_MAIN, 0.5, 0.5)
-            controller.press_button(Button.BUTTON_L);
+            controller.press_button(Button.BUTTON_L)
             return
 
         # We're done if we are in shield release
@@ -62,7 +61,7 @@ class Powershield(Chain):
 
         if not isshielding:
             self.interruptible = False
-            controller.press_button(Button.BUTTON_L);
+            controller.press_button(Button.BUTTON_L)
             controller.tilt_analog(Button.BUTTON_MAIN, 0.5, 0.5)
             return
 
