@@ -7,11 +7,11 @@ This is the "manually programmed" TAS-looking agent.
 Only plays Fox on FD.
 """
 class ESAgent():
-    def __init__(self, controller, gamestate, smashbot_port, opponent_port):
+    def __init__(self, controller, gamestate, smashbot_state, opponent_state):
         self.gamestate = gamestate
         self.controller = controller
-        self.smashbot_state = self.gamestate.player[smashbot_port]
-        self.opponent_state = self.gamestate.player[opponent_port]
+        self.smashbot_state = smashbot_state
+        self.opponent_state = opponent_state
         self.framedata = melee.framedata.FrameData()
         self.logger = gamestate.logger
         self.forced_difficulty = None
