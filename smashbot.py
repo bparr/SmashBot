@@ -55,10 +55,12 @@ dolphin = melee.dolphin.Dolphin(ai_port=args.port,
 gamestate = melee.gamestate.GameState(dolphin)
 
 #initialize our agent
-agent1 = ESAgent(dolphin, gamestate, args.port, args.opponent)
+controller1 = melee.controller.Controller(port=args.port, dolphin=dolphin)
+agent1 = ESAgent(controller1, gamestate, args.port, args.opponent)
 agent2 = None
 if args.bot:
-    agent2 = ESAgent(dolphin, gamestate, args.opponent, args.port)
+    controller2 = melee.controller.Controller(port=args.opponent, dolphin=dolphin)
+    agent2 = ESAgent(controller2, gamestate, args.opponent, args.port)
 
 def signal_handler(signal, frame):
     dolphin.terminate()
@@ -96,13 +98,9 @@ while True:
     if gamestate.menu_state == melee.enums.Menu.IN_GAME:
         #The agent's "step" will cascade all the way down the objective hierarchy
         if args.difficulty:
-            agent1.difficulty = int(args.difficulty)
+            agent1.force_difficulty(int(args.difficulty))
             if agent2:
-                agent2.difficulty = int(args.difficulty)
-        else:
-            agent1.difficulty = agent1.smashbot_state.stock
-            if agent2:
-                agent2.difficulty = agent2.smashbot_state.stock
+                agent2.force_difficulty(int(args.difficulty))
 
         if gamestate.stage != melee.enums.Stage.FINAL_DESTINATION:
             melee.techskill.multishine(ai_state=agent1.smashbot_state, controller=agent1.controller)
@@ -136,9 +134,9 @@ while True:
                                             start=False)
     #If we're at the postgame scores screen, spam START
     elif gamestate.menu_state == melee.enums.Menu.POSTGAME_SCORES:
-        melee.menuhelper.skippostgame(controller=agent1.controller)
+        melee.menuhelper.spamstartbutton(agent1.controller)
         if agent2:
-            melee.menuhelper.skippostgame(controller=agent2.controller)
+            melee.menuhelper.spamstartbutton(agent2.controller)
     #If we're at the stage select screen, choose a stage
     elif gamestate.menu_state == melee.enums.Menu.STAGE_SELECT:
         if agent2:
