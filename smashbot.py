@@ -4,7 +4,7 @@ import argparse
 import signal
 import sys
 
-from esagent import ESAgent
+from Strategies.esagent import ESAgent
 
 def check_port(value):
     ivalue = int(value)
