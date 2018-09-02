@@ -115,7 +115,7 @@ while True:
                     agent2.act()
             except Exception as error:
                 # Do nothing in case of error thrown!
-                controller.empty_input()
+                agent1.controller.empty_input()
                 if log:
                     log.log("Notes", "Exception thrown: " + repr(error) + " ", concat=True)
 
@@ -126,7 +126,6 @@ while True:
                                         port=args.port,
                                         opponent_port=args.opponent,
                                         controller=agent1.controller,
-                                        swag=True,
                                         start=False)
         if agent2:
             melee.menuhelper.choosecharacter(character=melee.enums.Character.FOX,
@@ -134,7 +133,6 @@ while True:
                                             port=args.opponent,
                                             opponent_port=args.port,
                                             controller=agent2.controller,
-                                            swag=True,
                                             start=False)
     #If we're at the postgame scores screen, spam START
     elif gamestate.menu_state == melee.enums.Menu.POSTGAME_SCORES:

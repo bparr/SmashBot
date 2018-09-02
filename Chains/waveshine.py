@@ -30,7 +30,7 @@ class Waveshine(Chain):
             return
 
         # Shine clank! We should shine again if we're in range
-        if opponent_state.hitstun_frames_left == 0 and smashbot_state.action == Action.SWORD_DANCE_2_MID_AIR and \
+        if opponent_state.hitstun_frames_left == 0 and smashbot_state.action == Action.DOWN_B_GROUND_START and \
                 self.gamestate.distance < 11.8:
             self.hasshined = False
 
@@ -116,7 +116,7 @@ class Waveshine(Chain):
             controller.empty_input()
             return
 
-        if smashbot_state.action in [Action.SWORD_DANCE_4_MID_AIR, Action.SWORD_DANCE_4_LOW_AIR]:
+        if smashbot_state.action in [Action.DOWN_B_STUN, Action.DOWN_B_AIR]:
             self.interruptible = False
         else:
             self.interruptible = True

@@ -28,7 +28,7 @@ class Punish(Tactic):
             return 1
 
         # Pikachu skull bash, thunder
-        if opponent_state.action in [Action.NEUTRAL_B_FULL_CHARGE, Action.NEUTRAL_B_ATTACKING, Action.SWORD_DANCE_2_MID_AIR, Action.SWORD_DANCE_2_HIGH_AIR] and \
+        if opponent_state.action in [Action.NEUTRAL_B_FULL_CHARGE, Action.NEUTRAL_B_ATTACKING, Action.DOWN_B_GROUND_START, Action.SWORD_DANCE_2_HIGH_AIR] and \
                 opponent_state.character == Character.PIKACHU:
             return 1
 
@@ -45,7 +45,7 @@ class Punish(Tactic):
 
         # Shine wait
         if opponent_state.character in [Character.FOX, Character.FALCO]:
-            if opponent_state.action in [Action.SWORD_DANCE_2_MID_AIR, Action.SWORD_DANCE_3_HIGH_AIR, Action.SWORD_DANCE_3_LOW_AIR]:
+            if opponent_state.action in [Action.DOWN_B_GROUND_START, Action.DOWN_B_GROUND, Action.SWORD_DANCE_3_LOW_AIR]:
                 return 3
 
         if opponent_state.action == Action.LOOPING_ATTACK_MIDDLE:

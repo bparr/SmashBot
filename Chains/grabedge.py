@@ -97,7 +97,7 @@ class Grabedge(Chain):
             return
 
         # If we're in the shine, but too high, just wait
-        if smashbot_state.action in [Action.SWORD_DANCE_4_MID_AIR, Action.SWORD_DANCE_4_LOW_AIR] \
+        if smashbot_state.action in [Action.DOWN_B_STUN, Action.DOWN_B_AIR] \
                 and -10 < smashbot_state.y and edgedistance < 10:
             self.interruptible = False
             controller.empty_input()

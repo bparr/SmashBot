@@ -259,7 +259,7 @@ class Edgeguard(Tactic):
             if action in [Action.SWORD_DANCE_3_HIGH, Action.SWORD_DANCE_3_MID, Action.SWORD_DANCE_3_LOW]:
                 return True
         if character == Character.SHEIK:
-            if action in [Action.SWORD_DANCE_1_AIR, Action.SWORD_DANCE_2_HIGH_AIR, Action.SWORD_DANCE_2_MID_AIR]:
+            if action in [Action.SWORD_DANCE_1_AIR, Action.SWORD_DANCE_2_HIGH_AIR, Action.DOWN_B_GROUND_START]:
                 return True
         if character == Character.SAMUS:
             if action in [Action.SWORD_DANCE_3_LOW]:

@@ -55,7 +55,8 @@ class Firefox(Chain):
             return
 
         # If we're traveling in the air, let go of the stick
-        if smashbot_state.action in [Action.FIREFOX_AIR, Action.DEAD_FALL]:
+        # Note that Action.SWORD_DANCE_4_MID is 'firefox in the air' action.
+        if smashbot_state.action in [Action.SWORD_DANCE_4_MID, Action.DEAD_FALL]:
             self.interruptible = False
             controller.empty_input()
             return
@@ -75,7 +76,8 @@ class Firefox(Chain):
             x = 1
 
         # Which way should we point?
-        if smashbot_state.action == Action.FIREFOX_WAIT_AIR:
+        # Action.SWORD_DANCE_3_LOW is 'firefox wait in the air' action.
+        if smashbot_state.action == Action.SWORD_DANCE_3_LOW:
             self.interruptible = False
             diff_x = abs(melee.stages.edgeposition(self.gamestate.stage) - abs(smashbot_state.x))
 
